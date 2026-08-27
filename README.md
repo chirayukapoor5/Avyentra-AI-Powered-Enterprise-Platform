@@ -1,8 +1,8 @@
 <div align="center">
 
-#  Enterprise AI Platform
+# Avyentra AI Platform
 
-### Production-Ready Enterprise AI Platform
+### The Intelligence Layer for the Enterprise
 
 ![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Framework-009688?logo=fastapi)
@@ -16,7 +16,7 @@
 
 ## Overview
 
-**Enterprise AI Platform** is a production-ready Retrieval-Augmented Generation (RAG) application built with **FastAPI**, **OpenAI GPT-4o-mini**, **ChromaDB**, **Docker**, **GitHub Actions**, and **Render Cloud**.
+**Avyentra** is a production-ready Retrieval-Augmented Generation (RAG) application built with **FastAPI**, **OpenAI GPT-4o-mini**, **ChromaDB**, **Docker**, **GitHub Actions**, and **Render Cloud**.
 
 The platform combines hybrid retrieval, conversation memory, AI-generated conversation summaries, streaming responses, evaluation metrics, logging & observability, automated testing with **Pytest**, and a fully automated **GitHub Actions CI/CD** pipeline for reliable cloud deployment.
 
@@ -35,6 +35,16 @@ Every push to the `main` branch automatically validates the FastAPI application,
 </div>
 
 ---
+## ✦ The Avyentra Brand
+
+**Avyentra — "Intelligence that moves the enterprise forward."**
+
+Avyentra serves as the intelligence layer for the modern enterprise, designed to represent AI, innovation, scalability, and forward momentum. 
+
+**Avyentra = AI + Venture + Enterprise**
+- **“Avy”** → Evokes AI, advancement, and agility.
+- **“Entr”** → Suggests enterprise, entry, and enablement.
+- **“A”** → Gives it a modern, technology-oriented finish.
 
 ![Enterprise AI Chat](assets/screenshots/chat.png)
 
@@ -100,7 +110,7 @@ Open in your browser:
 
 - [Overview](#overview)
 - [System Architecture](#system-architecture)
-- [Enterprise Web Platform](#enterprise-web-platform)
+- [Avyentra Web Platform](#enterprise-web-platform)
 - [Key Features](#key-features)
 - [Technology Stack](#technology-stack)
 - [Project Structure](#project-structure)
@@ -117,7 +127,7 @@ Open in your browser:
 
 # Overview
 
-Enterprise AI Platform is a production-ready Retrieval-Augmented Generation (RAG) application that demonstrates modern enterprise AI engineering practices using FastAPI, OpenAI, ChromaDB, Docker, GitHub Actions, and Render Cloud.
+Avyentra AI Powered Enterprise Platform is a production-ready Retrieval-Augmented Generation (RAG) application that demonstrates modern enterprise AI engineering practices using FastAPI, OpenAI, ChromaDB, Docker, GitHub Actions, and Render Cloud.
 
 The platform goes beyond a traditional RAG chatbot by providing a complete enterprise AI architecture with hybrid retrieval, conversation memory, session management, streaming responses, evaluation metrics, request logging, and cloud deployment.
 
@@ -149,7 +159,7 @@ The project follows a modular enterprise architecture designed for scalability, 
 
 #  Enterprise Highlights
 
-Enterprise AI Platform demonstrates the architecture, engineering practices, and deployment strategies used in modern enterprise AI applications. It combines scalable backend engineering, Retrieval-Augmented Generation (RAG), cloud deployment, observability, and DevOps into a production-ready AI platform.
+Avyentra AI Powered Enterprise Platform demonstrates the architecture, engineering practices, and deployment strategies used in modern enterprise AI applications. It combines scalable backend engineering, Retrieval-Augmented Generation (RAG), cloud deployment, observability, and DevOps into a production-ready AI platform.
 
 ---
 
@@ -239,9 +249,9 @@ The request lifecycle illustrates how a user request flows through the Enterpris
 
 ---
 
-#  Enterprise Web Platform
+#  Avyentra AI Powered Enterprise
 
-The Enterprise Web Platform provides an interactive interface for communicating with the FastAPI backend and managing AI conversations through a modern, dashboard-driven experience.
+The Avyentra AI Powered Enterprise Web Platform provides an interactive interface for communicating with the FastAPI backend and managing AI conversations through a modern, dashboard-driven experience.
 
 Current capabilities include:
 
@@ -310,7 +320,7 @@ Analyze request history and system activity through centralized logging. The das
 
 **Release:** Production Cloud Deployment
 
-The Enterprise AI Platform has evolved from a Retrieval-Augmented Generation (RAG) prototype into a production-ready enterprise AI application featuring cloud deployment, observability, conversation management, and a modern web platform.
+The Avyentra AI Powered Enterprise AI Platform has evolved from a Retrieval-Augmented Generation (RAG) prototype into a production-ready enterprise AI application featuring cloud deployment, observability, conversation management, and a modern web platform.
 
 Status:
 
@@ -752,7 +762,7 @@ The Enterprise AI Platform is being developed incrementally with a focus on prod
 
 # Project Goals
 
-The Enterprise AI Platform was built to demonstrate modern enterprise AI engineering by combining Retrieval-Augmented Generation (RAG), large language models, vector databases, conversation intelligence, observability, and cloud deployment into a production-ready application.
+The Avyentra AI Powered Enterprise Platform was built to demonstrate modern enterprise AI engineering by combining Retrieval-Augmented Generation (RAG), large language models, vector databases, conversation intelligence, observability, and cloud deployment into a production-ready application.
 
 Beyond implementing AI capabilities, the project emphasizes scalable software architecture, modular backend development, API design, DevOps practices, and production deployment. It serves as a practical demonstration of designing, building, deploying, and maintaining enterprise-grade AI systems.
 
