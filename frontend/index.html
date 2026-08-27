@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Enterprise AI Platform</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/settings.css">
+
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <aside class="sidebar">
+
+            <h2>
+                Enterprise AI<br>
+                Platform
+            </h2>
+
+            <nav>
+                <button class="nav-item active" data-view="chat">💬 Chat</button>
+                <button class="nav-item" data-view="evaluation">📊 Evaluation</button>
+                <button class="nav-item" data-view="sessions">📚 Sessions</button>
+                <button class="nav-item" data-view="logs">📜 Logs</button>
+                <button class="nav-item" data-view="settings">⚙ Settings</button>
+            </nav>
+
+            <div class="sidebar-version">
+    Enterprise AI Platform<br>
+    v2.0.0
+</div>
+
+        </aside>
+
+        <div class="main-panel">
+
+            <header>
+                <h1>Enterprise AI Platform</h1>
+
+                <p>
+                    FastAPI • GPT-4o-mini • Hybrid Retrieval • ChromaDB • Streaming • Enterprise Evaluation
+                </p>
+            </header>
+
+            <main id="workspace">
+
+                <section id="chat-section">
+
+                    <div id="chat-window"></div>
+
+                    <div class="input-area">
+
+                        <textarea
+                            id="question"
+                            placeholder="Ask a question..."
+                        ></textarea>
+
+                        <button id="send-button">
+                            Send
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+
+</body>
+
+</html>
