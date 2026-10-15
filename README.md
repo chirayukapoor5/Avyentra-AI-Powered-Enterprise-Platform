@@ -70,7 +70,7 @@ Avyentra serves as the intelligence layer for the modern enterprise, designed to
 Clone the repository:
 
 ```bash
-git clone https://github.com/aramradif/Enterprise-AI-Platform.git
+git clone https://github.com/chirayukapoor5/Avyentra-AI-Powered-Enterprise-Platform.git
 cd Enterprise-AI-Platform
 ```
 
