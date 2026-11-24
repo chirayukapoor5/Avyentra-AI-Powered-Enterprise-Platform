@@ -1,0 +1,33 @@
+[
+  {
+    "id": "returns",
+    "expected_sources": [
+      "return-policy"
+    ],
+    "required_phrases": [
+      "30 days"
+    ],
+    "forbidden_phrases": [
+      "unlimited"
+    ]
+  },
+  {
+    "id": "warehouse",
+    "expected_sources": [
+      "warehouse-guide",
+      "safety-guide"
+    ],
+    "required_phrases": [
+      "safety training"
+    ]
+  },
+  {
+    "id": "delivery",
+    "expected_sources": [
+      "delivery-faq"
+    ],
+    "required_phrases": [
+      "tracking number"
+    ]
+  }
+]
