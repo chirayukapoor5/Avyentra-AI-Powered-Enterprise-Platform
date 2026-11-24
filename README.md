@@ -90,6 +90,17 @@ The workflow uses Python 3.12 and attempts tests and a Docker build before calli
 
 The Render URL previously listed in this README also appears in the upstream README. It is not presented as an Avyentra-owned service. No third-party endpoint, CI run, screenshot or benchmark is evidence of independent Avyentra deployment.
 
+## Repository-specific engineering extension: offline RAG release gate
+
+This AI-assisted extension adds a dependency-free evaluator, strict input validation, retrieval recall@k, answer phrase checks, latency thresholds, JSON reports, and nonzero exit codes for regressions. It includes 12 unit tests and a dedicated CI workflow with passing and intentionally failing synthetic fixtures.
+
+- [Engineering design and reproduction guide](docs/RAG-QUALITY-GATE.md)
+- [Evaluator implementation](quality_gate.py)
+- [Unit tests](quality_tests/test_quality_gate.py)
+- [Dedicated quality-gate workflow](.github/workflows/rag-quality.yml)
+
+The fixtures test gate behavior, not real RAG quality or production latency. CI execution and deployment integration must be established separately.
+
 ## Next engineering milestones (not completed)
 
 - Confirm upstream licensing and permissions.

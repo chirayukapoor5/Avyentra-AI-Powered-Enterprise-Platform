@@ -1,0 +1,27 @@
+[
+  {
+    "id": "returns",
+    "retrieved_sources": [
+      "return-policy"
+    ],
+    "answer": "Returns are accepted within 30 days.",
+    "latency_ms": 120
+  },
+  {
+    "id": "warehouse",
+    "retrieved_sources": [
+      "warehouse-guide",
+      "safety-guide"
+    ],
+    "answer": "Complete safety training before entry.",
+    "latency_ms": 190
+  },
+  {
+    "id": "delivery",
+    "retrieved_sources": [
+      "delivery-faq"
+    ],
+    "answer": "Use the tracking number to check delivery.",
+    "latency_ms": 240
+  }
+]
