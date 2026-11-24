@@ -1,0 +1,37 @@
+name: RAG quality gate (offline)
+on:
+  push:
+    branches: [main, 'feature/rag-release-quality-gates']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Run isolated unit tests
+        run: python -m unittest discover -s quality_tests -v
+      - name: Verify passing fixture
+        run: python quality_gate.py --cases quality_fixtures/cases.json --predictions quality_fixtures/passing.json --report reports/passing.json
+      - name: Verify failing fixture blocks release
+        shell: bash
+        run: |
+          set +e
+          python quality_gate.py --cases quality_fixtures/cases.json --predictions quality_fixtures/regression.json --report reports/regression.json
+          status=$?
+          set -e
+          test "$status" -eq 1
+      - name: Upload evaluation artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rag-quality-reports
+          path: reports/*.json
+          if-no-files-found: warn
