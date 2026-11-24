@@ -1,775 +1,105 @@
-<div align="center">
-
 # Avyentra AI Platform
 
-### The Intelligence Layer for the Enterprise
+Production-oriented retrieval-augmented generation (RAG) portfolio adaptation.
 
-![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-Framework-009688?logo=fastapi)
-![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-412991?logo=openai)
-![ChromaDB](https://img.shields.io/badge/Vector%20DB-ChromaDB-orange)
-![Docker](https://img.shields.io/badge/Docker-Container-2496ED?logo=docker)
-![Render](https://img.shields.io/badge/Cloud-Render-46E3B7)
-![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?logo=githubactions)
-![License](https://img.shields.io/badge/License-MIT-green)
-![GitHub Actions](https://github.com/aramradif/Enterprise-AI-Platform/actions/workflows/ci.yml/badge.svg)
+[![CI workflow](https://github.com/chirayukapoor5/Avyentra-AI-Powered-Enterprise-Platform/actions/workflows/ci.yml/badge.svg)](https://github.com/chirayukapoor5/Avyentra-AI-Powered-Enterprise-Platform/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi)
+![Docker](https://img.shields.io/badge/Docker-container-2496ED?logo=docker)
 
-## Overview
+## Project provenance and contribution scope
 
-**Avyentra** is a production-ready Retrieval-Augmented Generation (RAG) application built with **FastAPI**, **OpenAI GPT-4o-mini**, **ChromaDB**, **Docker**, **GitHub Actions**, and **Render Cloud**.
+Avyentra is a repository maintained under [chirayukapoor5](https://github.com/chirayukapoor5), with branding and documentation changes to the [Enterprise AI Platform repository by aramradif](https://github.com/aramradif/Enterprise-AI-Platform). Credit for the upstream implementation belongs to its original contributors.
 
-The platform combines hybrid retrieval, conversation memory, AI-generated conversation summaries, streaming responses, evaluation metrics, logging & observability, automated testing with **Pytest**, and a fully automated **GitHub Actions CI/CD** pipeline for reliable cloud deployment.
+The initial import includes the RAG application, frontend, Docker configuration, CI/CD workflow and health test. A source comparison found identical Git blobs for `main.py`, `app/services/rag_service.py`, `frontend/js/api.js`, `Dockerfile`, `docker-compose.yml`, `.github/workflows/ci.yml` and `tests/test_health.py`. Repository ownership and an import commit do not establish original implementation authorship.
 
-Every push to the `main` branch automatically validates the FastAPI application, executes automated tests, builds the Docker image, and deploys the latest version to Render Cloud after all quality checks pass.
+Documented repository-specific changes include branding and README updates. See the [commit history](https://github.com/chirayukapoor5/Avyentra-AI-Powered-Enterprise-Platform/commits/main/) for the actual change record. Additional engineering contributions should be assessed from their individual diffs and test evidence, not attributed to the maintainer solely because they appear in this repository.
 
----
+## What the inherited implementation demonstrates
 
-###  Live Demo
+- FastAPI REST endpoints for retrieval, streaming, sessions and request logs.
+- Hybrid semantic and keyword retrieval with ChromaDB and OpenAI embeddings.
+- GPT-4o-mini integration, conversation memory and source citations.
+- Evaluation and observability fields for latency, token counts and estimated costs.
+- HTML/CSS/JavaScript frontend and local API integration.
+- Docker and Docker Compose configuration.
+- A GitHub Actions workflow for syntax checks, application import, pytest, image build and a conditional Render deployment hook.
 
-**API:** https://enterprise-ai-platform-fg5v.onrender.com
+These are features of the codebase, not a claim that the Avyentra maintainer independently authored or operated all of them.
 
-**Swagger:** https://enterprise-ai-platform-fg5v.onrender.com/docs
+## Architecture
 
-**Health:** https://enterprise-ai-platform-fg5v.onrender.com/health
+The inherited architecture separates the web client, FastAPI endpoints, RAG orchestration, retrieval, conversation management and logging. See the [upstream repository](https://github.com/aramradif/Enterprise-AI-Platform) for its original diagrams and screenshots.
 
-</div>
+```text
+Web client -> FastAPI -> RAG service -> Hybrid retrieval -> ChromaDB
+                            |               |
+                            |               +-> Retrieved context
+                            +-> Conversation memory -> OpenAI
+                            +-> Evaluation / request logs
+```
 
----
-## ✦ The Avyentra Brand
+## Run locally
 
-**Avyentra — "Intelligence that moves the enterprise forward."**
-
-Avyentra serves as the intelligence layer for the modern enterprise, designed to represent AI, innovation, scalability, and forward momentum. 
-
-**Avyentra = AI + Venture + Enterprise**
-- **“Avy”** → Evokes AI, advancement, and agility.
-- **“Entr”** → Suggests enterprise, entry, and enablement.
-- **“A”** → Gives it a modern, technology-oriented finish.
-
-![Enterprise AI Chat](assets/screenshots/chat.png)
-
----
-
-## Enterprise Features
-
-- Hybrid Retrieval (Semantic + Keyword Search)
-- GPT-4o-mini Integration
-- Session-Based Conversation Memory
-- Streaming AI Responses
-- Enterprise Evaluation Dashboard
-- Request Logging & Observability
-- Source Citations
-- Docker Containerization
-- GitHub Actions CI/CD
-- Cloud Deployment on Render
-
----
-
-#  Quick Start
-
-Clone the repository:
+Python 3.12 matches the checked-in Dockerfile and CI configuration.
 
 ```bash
 git clone https://github.com/chirayukapoor5/Avyentra-AI-Powered-Enterprise-Platform.git
-cd Enterprise-AI-Platform
-```
-
-Create and activate a virtual environment:
-
-```bash
+cd Avyentra-AI-Powered-Enterprise-Platform
 python -m venv .venv
-
-# Windows
-.venv\Scripts\activate
-
-# macOS / Linux
+# Linux/macOS:
 source .venv/bin/activate
-```
-
-Install dependencies:
-
-```bash
+# Windows PowerShell instead: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-Start the API server:
+Copy `.env.example` to `.env` and supply your own required configuration, including an OpenAI API key for provider-backed functionality. Do not commit credentials. Then run:
 
 ```bash
 uvicorn main:app --reload
 ```
 
-Open in your browser:
+Local endpoints: [Swagger UI](http://127.0.0.1:8000/docs) and [health](http://127.0.0.1:8000/health). The frontend is configured for the local API at port 8000 and can be served separately from the repository root (for example, using VS Code Live Server).
 
-- **Swagger API Documentation:** http://127.0.0.1:8000/docs
-- **Health Check:** http://127.0.0.1:8000/health
-- **Web Interface:** http://127.0.0.1:5500/frontend/index.html
-
----
-
-#  Table of Contents
-
-- [Overview](#overview)
-- [System Architecture](#system-architecture)
-- [Avyentra Web Platform](#enterprise-web-platform)
-- [Key Features](#key-features)
-- [Technology Stack](#technology-stack)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Running the Backend API](#running-the-backend-api)
-- [API Endpoints](#api-endpoints)
-- [Docker Deployment](#docker-deployment)
-- [Cloud Deployment](#cloud-deployment)
-- [GitHub Actions (CI)](#github-actions-ci)
-- [Roadmap](#roadmap)
-- [Author](#author)
-
----
-
-# Overview
-
-Avyentra AI Powered Enterprise Platform is a production-ready Retrieval-Augmented Generation (RAG) application that demonstrates modern enterprise AI engineering practices using FastAPI, OpenAI, ChromaDB, Docker, GitHub Actions, and Render Cloud.
-
-The platform goes beyond a traditional RAG chatbot by providing a complete enterprise AI architecture with hybrid retrieval, conversation memory, session management, streaming responses, evaluation metrics, request logging, and cloud deployment.
-
-Key capabilities include:
-
-- Retrieval-Augmented Generation (RAG)
-- Hybrid Retrieval (Semantic + Keyword Search)
-- OpenAI GPT-4o-mini Integration
-- ChromaDB Vector Database
-- Multi-format Document Ingestion
-- Session-Based Conversation Management
-- Conversation Memory & AI Summaries
-- Streaming AI Responses
-- Evaluation Dashboard
-- Enterprise Logs Dashboard
-- Token Usage & Cost Tracking
-- Prompt Type Detection
-- Source Citations
-- RESTful FastAPI API
-- Interactive Enterprise Web Interface
-- Docker Containerization
-- Automated Testing (Pytest)
-- GitHub Actions CI/CD Pipeline
-- Automated Render Deployment
-
-The project follows a modular enterprise architecture designed for scalability, maintainability, and production deployment while showcasing real-world AI engineering workflows.
-
----
-
-#  Enterprise Highlights
-
-Avyentra AI Powered Enterprise Platform demonstrates the architecture, engineering practices, and deployment strategies used in modern enterprise AI applications. It combines scalable backend engineering, Retrieval-Augmented Generation (RAG), cloud deployment, observability, and DevOps into a production-ready AI platform.
-
----
-
-##  AI & Retrieval
-
-- Retrieval-Augmented Generation (RAG)
-- Hybrid Retrieval (Semantic + Keyword Search)
-- OpenAI GPT-4o-mini
-- OpenAI Embeddings
-- ChromaDB Vector Database
-- Multi-format Document Ingestion
-- Intelligent Context Selection
-- Grounded AI Responses with Source Citations
-
----
-
-##  Conversation Intelligence
-
-- Session-Based Conversation Management
-- Conversation Memory
-- AI-Generated Conversation Summaries
-- Multi-turn Conversations
-- Intelligent Request Routing
-- Context-Aware Responses
-- Streaming AI Responses
-
----
-
-##  Enterprise Platform
-
-- Interactive Enterprise Web Interface
-- Streaming Chat Experience
-- Sessions Dashboard
-- Conversation History
-- Evaluation Dashboard
-- Logs Dashboard
-- Swagger / OpenAPI Documentation
-- RESTful FastAPI API
-
----
-
-##  AI Evaluation & Observability
-
-- Retrieval Latency
-- LLM Latency
-- Prompt Type Detection
-- Token Usage
-- Prompt & Completion Token Tracking
-- Estimated Cost Tracking
-- Request Logging
-- Enterprise Metrics Dashboard
-- Source Citations
-
----
-
-##  DevOps & Cloud Deployment
-
-- Docker Containerization
-- Docker Compose
-- GitHub Actions CI/CD
-- Render Cloud Deployment
-- Environment Variable Management
-- Production Health Checks
-- Modular Enterprise Architecture
-
-#  System Architecture
-
-![Enterprise AI Platform Architecture](assets/diagrams/enterprise-ai-platform-architecture.png)
-
-The Enterprise AI Platform follows a modular, layered architecture that separates the presentation layer, API services, AI orchestration, retrieval pipeline, conversation management, observability, and deployment infrastructure. This design promotes scalability, maintainability, and production readiness.
-
-A user request enters through the Enterprise Web Platform or the REST API hosted on FastAPI. The request is routed to the RAG Service, which determines whether the query requires document retrieval or can be answered using conversation memory and session context.
-
-For knowledge-based questions, the platform performs Hybrid Retrieval by combining semantic vector search with keyword search to identify the most relevant document chunks stored in ChromaDB. Retrieved context is combined with conversation history to build a grounded prompt for GPT-4o-mini, enabling accurate, context-aware responses with source citations.
-
-Every request is evaluated and logged to capture retrieval latency, LLM latency, token usage, estimated cost, prompt type, routing decisions, and citations. These metrics power the Evaluation Dashboard and Logs Dashboard, providing enterprise-grade AI observability.
-
-The platform is containerized with Docker, continuously validated using GitHub Actions, and deployed on Render Cloud, demonstrating a complete production-oriented AI engineering workflow.
-
----
-
-## Request Lifecycle
-
-![Enterprise AI Platform Request Lifecycle](assets/diagrams/request-lifecycle.png)
-
-The request lifecycle illustrates how a user request flows through the Enterprise AI Platform. Each question is routed through session management, conversation memory, hybrid retrieval, prompt construction, GPT-4o-mini, evaluation, logging, and finally streamed back to the user with grounded source citations.
-
----
-
-#  Avyentra AI Powered Enterprise
-
-The Avyentra AI Powered Enterprise Web Platform provides an interactive interface for communicating with the FastAPI backend and managing AI conversations through a modern, dashboard-driven experience.
-
-Current capabilities include:
-
-- Streaming AI Chat
-- Session Management
-- Conversation History
-- Enterprise Evaluation Dashboard
-- Logs Dashboard
-- Hybrid Retrieval
-- Conversation Memory
-- AI-Generated Conversation Summaries
-- Real-Time Evaluation Metrics
-- Token Usage Tracking
-- Estimated Cost Reporting
-- Source Citations
-- Persistent Chat State
-- Sidebar Navigation
-
-The platform is designed with a modular architecture that can be extended with authentication, administrative tools, cloud-native services, and additional enterprise AI capabilities as the project evolves.
-
----
-
-##  Streaming Chat
-
-Interact with the AI assistant through a real-time streaming interface that delivers responses incrementally for a faster, more responsive user experience. The chat interface supports conversation memory, context-aware responses, and grounded answers using Retrieval-Augmented Generation (RAG).
-
-![Streaming Chat](assets/screenshots/chat.png)
-
----
-
-##  Sessions Dashboard
-
-Create, manage, switch between, and delete conversation sessions. Each session maintains its own conversation history and memory, enabling independent multi-turn AI interactions.
-
-![Sessions Dashboard](assets/screenshots/sessions-dashboard.png)
-
----
-
-##  Conversation History
-
-Review previous conversations within each session to preserve long-term context and provide continuity across multiple user interactions. Conversation history supports AI-generated summaries and context-aware responses.
-
-![Conversation History](assets/screenshots/conversation-history.png)
-
----
-
-##  Evaluation Dashboard
-
-Monitor AI performance through enterprise observability metrics, including retrieval latency, LLM latency, prompt classification, token usage, estimated cost, routing decisions, and source citations for every request.
-
-![Evaluation Dashboard](assets/screenshots/evaluation-dashboard.png)
-
----
-
-##  Logs Dashboard
-
-Analyze request history and system activity through centralized logging. The dashboard provides visibility into AI requests, latency, token consumption, estimated cost, routing decisions, and overall platform performance for troubleshooting and monitoring.
-
-![Logs Dashboard](assets/screenshots/logs-dashboard.png)
-
----
-
-# Project Status
-
-**Current Version:** **v2.0**
-
-**Release:** Production Cloud Deployment
-
-The Avyentra AI Powered Enterprise AI Platform has evolved from a Retrieval-Augmented Generation (RAG) prototype into a production-ready enterprise AI application featuring cloud deployment, observability, conversation management, and a modern web platform.
-
-Status:
-
-✔ Production Ready
-
-✔ Dockerized
-
-✔ CI/CD Enabled
-
-✔ Cloud Deployed
-
-✔ Automated Testing
-
-✔ Enterprise Architecture
-
-✔ Observability & Evaluation
-
----
-
-## Latest Release (v2.0)
-
-### New Features
-
-- Enterprise Session Management
-- Conversation History Dashboard
-- Enterprise Evaluation Dashboard
-- Enterprise Logs Dashboard
-- Intelligent Request Routing
-- Source Citations
-- Prompt Type Detection
-- Streaming AI Responses
-- Hybrid Retrieval (Semantic + Keyword)
-- Conversation Memory & AI Summaries
-- Session Lifecycle API
-- Production Health Endpoint
-- Docker Containerization
-- GitHub Actions CI/CD Pipeline
-- Cloud Deployment on Render
-
----
-
-### Improvements
-
-- Production-Ready Enterprise Web Platform
-- Enhanced Evaluation Metrics
-- Token Usage & Cost Tracking
-- Improved API Documentation
-- Professional Dashboard Layout
-- Modernized Modular Architecture
-- Enterprise Observability
-- Improved Session Management
-
----
-
-# Key Features
-
-## AI & Retrieval
-
-- Retrieval-Augmented Generation (RAG)
-- Hybrid Retrieval (Semantic + Keyword Search)
-- OpenAI GPT-4o-mini Integration
-- OpenAI Embeddings
-- ChromaDB Vector Database
-- Multi-format Document Ingestion (PDF, DOCX, TXT, Markdown)
-- Intelligent Context Selection
-- Source-aware Responses with Citations
-
----
-
-## Conversation Intelligence
-
-- Session-Based Conversation Management
-- Conversation Memory
-- AI-Generated Conversation Summaries
-- Multi-turn Conversations
-- Context-Aware Responses
-- Intelligent Request Routing
-- Streaming AI Responses
-
----
-
-## Enterprise Web Platform
-
-- Interactive Enterprise Web Interface
-- Streaming Chat
-- Sessions Dashboard
-- Conversation History Dashboard
-- Evaluation Dashboard
-- Logs Dashboard
-- Persistent Chat State
-- Sidebar Navigation
-
----
-
-## API & Backend
-
-- RESTful FastAPI API
-- Interactive Swagger / OpenAPI Documentation
-- Streaming API Endpoint
-- Evaluation API
-- Session Lifecycle API
-- Health Monitoring Endpoint
-- Request Logging
-- Modular Service-Oriented Architecture
-
----
-
-## AI Evaluation & Observability
-
-- Retrieval Latency Metrics
-- LLM Latency Metrics
-- Prompt Type Detection
-- Token Usage Tracking
-- Prompt & Completion Token Counts
-- Estimated Cost Tracking
-- Source Citations
-- Enterprise Metrics Dashboard
-
----
-
-## DevOps & Deployment
-
-- Docker Containerization
-- GitHub Actions CI/CD
-- Automated Testing with Pytest
-- Automated Deployment to Render Cloud
-- Environment Variable Management
-- Production Health Checks
-
----
-
-## Developer Experience
-
-- Clean Modular Architecture
-- Reusable Components
-- Configuration-Based Design
-- Extensible Project Structure
-- Production-Ready Codebase
-
----
-
-# Automated CI/CD Pipeline
-
-Every push to the `main` branch automatically executes the following workflow:
-
-1. Install project dependencies
-2. Validate Python source code
-3. Verify FastAPI application startup
-4. Execute automated Pytest tests
-5. Build the Docker container image
-6. Trigger automated deployment to Render Cloud
-
-Deployment occurs only after all validation and automated tests pass successfully.
-
----
-
-# Technology Stack
-
-## Backend
-
-- Python 3.14
-- FastAPI
-- Uvicorn
-- Pydantic
-
----
-
-## Artificial Intelligence
-
-- OpenAI GPT-4o-mini
-- OpenAI text-embedding-3-small
-- Retrieval-Augmented Generation (RAG)
-- Hybrid Retrieval (Semantic + Keyword Search)
-- Prompt Engineering
-
----
-
-## Vector Database
-
-- ChromaDB
-
----
-
-## Document Processing
-
-- PDF (pypdf)
-- DOCX (python-docx)
-- TXT
-- Markdown
-
----
-
-## Frontend
-
-- HTML5
-- CSS3
-- JavaScript (ES Modules)
-
----
-
-## DevOps & Deployment
-
-- GitHub Actions
-- Pytest
-- Docker
-- Render Cloud
-
----
-
-## Development
-
-- Git
-- GitHub
-- VS Code
-
----
-
-# Project Structure
-
-```text
-Enterprise-AI-Platform/
-│
-├── .github/
-│   └── workflows/
-│
-├── app/
-│   ├── api/
-│   ├── config/
-│   ├── core/
-│   ├── embeddings/
-│   ├── evaluation/
-│   ├── ingestion/
-│   ├── llm/
-│   ├── memory/
-│   ├── models/
-│   ├── retrieval/
-│   └── services/
-│
-├── assets/
-├── data/
-├── frontend/
-│   ├── js/
-│   └── pages/
-│
-├── scripts/
-├── tests/
-│
-├── Dockerfile
-├── main.py
-├── requirements.txt
-└── README.md
-```
-
----
-
-# Installation
-
-Clone the repository:
+Docker build:
 
 ```bash
-git clone https://github.com/aramradif/Enterprise-AI-Platform.git
-cd Enterprise-AI-Platform
+docker build -t avyentra:local .
+docker run --rm --env-file .env -p 8000:8000 avyentra:local
 ```
 
-Create and activate a virtual environment:
+## Verification and deployment status
+
+| Item | Evidence / status |
+| --- | --- |
+| CI configuration | [Repository workflow](.github/workflows/ci.yml) |
+| Automated test | [Health endpoint test](tests/test_health.py) |
+| CI execution | [This repository's workflow runs](https://github.com/chirayukapoor5/Avyentra-AI-Powered-Enterprise-Platform/actions/workflows/ci.yml); successful execution not independently established in the documentation audit |
+| Docker runtime | [Dockerfile](Dockerfile); build/run not independently verified in the documentation audit |
+| Render deployment | Conditional deployment hook configured; credentials, service ownership and successful deployment not verified |
+| Public demo | No independently verified Avyentra-owned deployment currently documented |
+
+Run the checked-in automated test suite locally:
 
 ```bash
-python -m venv .venv
-
-# Windows
-.venv\Scripts\activate
-
-# macOS / Linux
-source .venv/bin/activate
+python -m compileall app main.py
+python -m pytest tests -q
 ```
 
-Install dependencies:
+The workflow uses Python 3.12 and attempts tests and a Docker build before calling a Render deployment hook on pushes to main. It requires repository-specific configuration and secrets. A configured hook does not establish a successful deployment or a production-grade operating environment.
 
-```bash
-pip install -r requirements.txt
-```
+The Render URL previously listed in this README also appears in the upstream README. It is not presented as an Avyentra-owned service. No third-party endpoint, CI run, screenshot or benchmark is evidence of independent Avyentra deployment.
 
----
+## Next engineering milestones (not completed)
 
-# Running the Backend API
+- Confirm upstream licensing and permissions.
+- Add original, independently reviewable engineering changes with unit and integration tests.
+- Establish successful CI runs within this repository.
+- Configure an independently controlled deployment with post-deployment smoke tests.
+- Document measured reliability and performance, including test environment and limitations.
 
-Start the FastAPI development server:
+## License and attribution
 
-```bash
-uvicorn main:app --reload
-```
+The upstream README describes the project as MIT-licensed, but no standalone LICENSE, LICENSE.md or LICENSE.txt was located in either repository during the documentation audit. The previous MIT badge is therefore not used as independent confirmation of licensing. Confirm the applicable license and preserve any required copyright and permission notices before further redistribution or deployment. This README does not grant new rights over upstream code.
 
-Available locally:
-
-- **Swagger UI:** http://127.0.0.1:8000/docs
-- **Health Check:** http://127.0.0.1:8000/health
-
-![Swagger UI](assets/screenshots/swagger-ui.png)
-
----
-
-# API Endpoints
-
-The Enterprise AI Platform exposes a RESTful FastAPI API for Retrieval-Augmented Generation (RAG), streaming responses, session management, evaluation, and enterprise observability.
-
-All endpoints are documented through the interactive Swagger / OpenAPI interface.
-
-| Method | Endpoint | Description |
-|----------|----------|-------------|
-| GET | `/` | API information |
-| GET | `/health` | Health check |
-| POST | `/ask` | Standard RAG question answering |
-| POST | `/ask/stream` | Streaming AI responses |
-| POST | `/evaluate` | Enterprise evaluation with performance metrics |
-| GET | `/logs` | Retrieve request logs and observability metrics |
-| GET | `/sessions` | List all conversation sessions |
-| POST | `/sessions` | Create a new conversation session |
-| GET | `/sessions/{session_id}` | Retrieve a session and its conversation history |
-| DELETE | `/sessions/{session_id}` | Delete a conversation session |
-| DELETE | `/sessions/{session_id}/messages` | Clear all messages within a session |
-
----
-
-# Enterprise Web Platform
-
-Launch the frontend using VS Code Live Server.
-
-Open:
-
-```text
-http://127.0.0.1:5500/frontend/index.html
-```
-
-Current capabilities include:
-
-- Streaming AI Chat
-- Session Management
-- Conversation History
-- Conversation Memory
-- AI-Generated Conversation Summaries
-- Evaluation Dashboard
-- Logs Dashboard
-- Source Citations
-- Real-Time AI Metrics
-- Persistent Chat State
-- Sidebar Navigation
-
-The Enterprise Web Platform provides an interactive interface for managing AI conversations, monitoring system performance, and exploring enterprise observability metrics through a modern dashboard experience.
-
----
-
-# Cloud Deployment Pipeline
-
-![Cloud Deployment Pipeline](assets/diagrams/cloud-deployment-pipeline.png)
-
-The Enterprise AI Platform follows a modern deployment workflow. Source code is managed in GitHub, validated through GitHub Actions, containerized with Docker, and deployed to Render Cloud. This pipeline enables automated builds, reliable deployments, and a production-ready API.
-
----
-
-# Roadmap
-
-The Enterprise AI Platform is being developed incrementally with a focus on production-ready AI engineering practices.
-
-## Completed
-
-### Enterprise Retrieval
-
-- Hybrid Retrieval (Semantic + Keyword Search)
-- ChromaDB Vector Database
-- OpenAI Embeddings
-- Multi-format Document Ingestion
-- Automatic Document Chunking
-- Intelligent Context Selection
-
-### Intelligent Generation
-
-- GPT-4o-mini Integration
-- Grounded AI Responses
-- Source Citations
-- Streaming AI Responses
-- Prompt Engineering
-
-### Conversation Intelligence
-
-- Session Management
-- Conversation Memory
-- AI-Generated Conversation Summaries
-- Conversation History
-- Intelligent Request Routing
-
-### Enterprise Platform
-
-- Interactive Enterprise Web Platform
-- Sessions Dashboard
-- Evaluation Dashboard
-- Logs Dashboard
-- Swagger / OpenAPI Documentation
-- Enterprise Navigation
-
-### AI Observability
-
-- Retrieval Latency Metrics
-- LLM Latency Metrics
-- Prompt Type Detection
-- Token Usage Tracking
-- Cost Estimation
-- Request Logging
-
-### DevOps & Deployment
-
-- Docker Containerization
-- GitHub Actions CI/CD Pipeline
-- Render Cloud Deployment
-- Production Health Endpoint
-
----
-
-## In Progress
-
-- Authentication & Authorization
-- Redis Caching
-- PostgreSQL Persistence
-- Comprehensive Unit Testing
-- Integration Testing
-
----
-
-## Future Enhancements
-
-- Role-Based Access Control (RBAC)
-- Kubernetes Deployment
-- Prometheus & Grafana Monitoring
-- MCP Integration
-- Multi-Agent Workflows
-- Enterprise Security
-- Horizontal Scaling
-
----
-
-# Project Goals
-
-The Avyentra AI Powered Enterprise Platform was built to demonstrate modern enterprise AI engineering by combining Retrieval-Augmented Generation (RAG), large language models, vector databases, conversation intelligence, observability, and cloud deployment into a production-ready application.
-
-Beyond implementing AI capabilities, the project emphasizes scalable software architecture, modular backend development, API design, DevOps practices, and production deployment. It serves as a practical demonstration of designing, building, deploying, and maintaining enterprise-grade AI systems.
-
-Future development will focus on authentication, distributed caching, persistent storage, advanced monitoring, Kubernetes orchestration, and agentic AI workflows to further expand the platform.
-
----
-
-# License
-
-This project is licensed under the MIT License.
+Upstream project: [aramradif/Enterprise-AI-Platform](https://github.com/aramradif/Enterprise-AI-Platform).
