@@ -1,0 +1,26 @@
+[
+  {
+    "id": "returns",
+    "retrieved_sources": [
+      "unrelated"
+    ],
+    "answer": "Returns are unlimited.",
+    "latency_ms": 120
+  },
+  {
+    "id": "warehouse",
+    "retrieved_sources": [
+      "warehouse-guide"
+    ],
+    "answer": "No training needed.",
+    "latency_ms": 190
+  },
+  {
+    "id": "delivery",
+    "retrieved_sources": [
+      "delivery-faq"
+    ],
+    "answer": "Use the tracking number to check delivery.",
+    "latency_ms": 2200
+  }
+]
